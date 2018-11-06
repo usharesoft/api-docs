@@ -63,6 +63,7 @@ This documentation provides a description of UForge AppCenter RESTful interface.
     pages/workspacemembers/overview
     pages/workspacetemplate/overview
     pages/workspacetemplatecomments/overview
+    Changelog <http://docs.usharesoft.com/projects/appcenter-user-guide/en/latest/pages/changelog.html>
 
 .. _trademarks:
 
