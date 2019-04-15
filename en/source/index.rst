@@ -64,6 +64,8 @@ This documentation provides a description of UForge AppCenter RESTful interface.
     pages/workspacemembers/overview
     pages/workspacetemplate/overview
     pages/workspacetemplatecomments/overview
+    3rd Party Components <http://docs.usharesoft.com/projects/appcenter-user-guide/en/latest/pages/licensing.html>
+    Changelog <http://docs.usharesoft.com/projects/appcenter-user-guide/en/latest/pages/changelog.html>
 
 .. _trademarks:
 

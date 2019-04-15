@@ -14,6 +14,7 @@ The list of attributes for ``blueprintSummary`` are:
 
 	* ``version`` (string): the version of the blueprint
 	* ``revision`` (string): the revision of the blueprint
+	* ``compliant`` (boolean): flag to indicate if all the appliances are blueprint compliant
 	* ``name`` (string): the name
 	* ``uri`` (anyURI): the uri
 	* ``created`` (dateTime): the date the appliance template is created
