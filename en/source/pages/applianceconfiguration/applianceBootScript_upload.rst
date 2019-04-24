@@ -29,7 +29,7 @@ URI Parameters
 
 * ``uid`` (required): the user name (login name) of the :ref:`user-object`
 * ``bsid`` (required): the id of the :ref:`bootscript-object`
-* ``fileName`` (required): the name of the boot script
+* ``fileName`` (required): the boot script filename to add
 * ``aid`` (required): the id of the :ref:`appliance-object`
 
 HTTP Request Body Parameters
