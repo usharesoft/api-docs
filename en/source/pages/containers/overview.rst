@@ -7,7 +7,6 @@ Containers API Resources
 
 	* :ref:`containerTemplateImageGeneration-cancel`: Cancels a running generation of a machine image generated from a container template
 	* :ref:`containerTemplateImageGeneration-get`: Retrieves the generation status of a machine image generated from a container template
-	* :ref:`containerTemplateImagePkg-getAll`: Retrieves all the native packages contained in the machine image
 	* :ref:`containerTemplateImagePublish-cancel`: Cancels a running publish of a machine image generated from a container template
 	* :ref:`containerTemplateImagePublish-get`: Retrieves the publish status of a machine image generated from a container template
 	* :ref:`containerTemplateImagePublished-delete`: Deletes a published machine image for a container template
@@ -30,7 +29,6 @@ Containers API Resources
 
     containerTemplateImageGeneration_cancel
     containerTemplateImageGeneration_get
-    containerTemplateImagePkg_getAll
     containerTemplateImagePublish_cancel
     containerTemplateImagePublish_get
     containerTemplateImagePublished_delete
