@@ -46,7 +46,6 @@ Example Request
 .. seealso::
 
 	 * :ref:`containerTemplateImageGeneration-get`
-	 * :ref:`containerTemplateImagePkg-getAll`
 	 * :ref:`containerTemplateImagePublish-cancel`
 	 * :ref:`containerTemplateImagePublish-get`
 	 * :ref:`containerTemplateImagePublished-delete`
