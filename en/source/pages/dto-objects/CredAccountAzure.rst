@@ -16,6 +16,7 @@ The list of attributes for ``CredAccountAzure`` are:
 	* ``subscriptionId`` (string): the subscription id to use
 	* ``applicationId`` (string): the application id to use
 	* ``applicationKey`` (string): the application key to use
+	* ``endpointUrl`` (string): the endpoint url to use
 	* ``name`` (string): the name of the cloud account
 	* ``parentUri`` (anyURI): the uri resource of the parent object this cloud account is attached to
 	* ``uri`` (anyURI): the uri resource of this cloud account
