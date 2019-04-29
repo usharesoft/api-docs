@@ -1755,6 +1755,11 @@
                             <xsd:documentation xml:lang="en">the revision of the blueprint</xsd:documentation>
                         </xsd:annotation>
                     </xs:element>
+                    <xs:element name="compliant" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">flag to indicate if all the appliances are blueprint compliant</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -3055,6 +3060,11 @@
                     <xs:element name="applicationKey" type="xs:string" minOccurs="0">
                         <xsd:annotation>
                             <xsd:documentation xml:lang="en">the application key to use</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="endpointUrl" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the endpoint url to use</xsd:documentation>
                         </xsd:annotation>
                     </xs:element>
                 </xs:sequence>
