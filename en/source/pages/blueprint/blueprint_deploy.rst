@@ -11,7 +11,7 @@ blueprint_deploy
 
 	* Method: ``POST``
 	* Response Code: ``201``
-	* Response Formats: 
+	* Response Formats: ``application/xml`` ``application/json``
 	* Since: ``UForge 3.8.fp4``
 
 Deploys a blueprint.

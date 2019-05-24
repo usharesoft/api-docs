@@ -24,9 +24,20 @@ This section provides a description of all UForge AppCenter REST Data Transfer o
 	* :ref:`artifactcredaccounts-object`
 	* :ref:`blueprint-object`
 	* :ref:`blueprintdeployment-object`
+	* :ref:`deploymentactivity-object`
+	* :ref:`deploymenteffectors-object`
+	* :ref:`deploymenteffector-object`
+	* :ref:`deploymentparameter-object`
+	* :ref:`deploymententity-object`
+	* :ref:`deploymenthardware-object`
+	* :ref:`deploymentstream-object`
+	* :ref:`deploymentsensor-object`
+	* :ref:`deploymentconfig-object`
 	* :ref:`blueprintdeploymentaws-object`
+	* :ref:`blueprintdeploymentazure-object`
 	* :ref:`blueprintpipeline-object`
 	* :ref:`blueprintpipelineaws-object`
+	* :ref:`blueprintpipelineazure-object`
 	* :ref:`blueprintpredeploy-object`
 	* :ref:`blueprintservice-object`
 	* :ref:`blueprintsummary-object`
@@ -64,6 +75,7 @@ This section provides a description of all UForge AppCenter REST Data Transfer o
 	* :ref:`credaccountdocker-object`
 	* :ref:`credaccountopenshift-object`
 	* :ref:`credaccountoracle-object`
+	* :ref:`deploymentid-object`
 	* :ref:`deployment-object`
 	* :ref:`deployments-object`
 	* :ref:`disk-object`
@@ -249,9 +261,20 @@ This section provides a description of all UForge AppCenter REST Data Transfer o
     ArtifactCredAccounts
     Blueprint
     BlueprintDeployment
+    DeploymentActivity
+    DeploymentEffectors
+    DeploymentEffector
+    DeploymentParameter
+    DeploymentEntity
+    DeploymentHardware
+    DeploymentStream
+    DeploymentSensor
+    DeploymentConfig
     BlueprintDeploymentAws
+    BlueprintDeploymentAzure
     BlueprintPipeline
     BlueprintPipelineAws
+    BlueprintPipelineAzure
     BlueprintPredeploy
     BlueprintService
     BlueprintSummary
@@ -289,6 +312,7 @@ This section provides a description of all UForge AppCenter REST Data Transfer o
     CredAccountDocker
     CredAccountOpenShift
     CredAccountOracle
+    DeploymentId
     Deployment
     Deployments
     Disk
