@@ -112,7 +112,25 @@
 
     <xs:element name="credAccounts" type="CredAccounts"/>
 
+    <xs:element name="deploymentId" type="DeploymentId"/>
+
     <xs:element name="deployment" type="Deployment"/>
+
+    <xs:element name="deploymentActivity" type="DeploymentActivity"/>
+
+    <xs:element name="deploymentEffectors" type="DeploymentEffectors"/>
+
+    <xs:element name="deploymentEffector" type="DeploymentEffector"/>
+
+    <xs:element name="deploymentParameter" type="DeploymentParameter"/>
+
+    <xs:element name="deploymentEntity" type="DeploymentEntity"/>
+
+    <xs:element name="deploymentStream" type="DeploymentStream"/>
+
+    <xs:element name="deploymentSensor" type="DeploymentSensor"/>
+
+    <xs:element name="deploymentConfig" type="DeploymentConfig"/>
 
     <xs:element name="deployments" type="Deployments"/>
 
@@ -1536,6 +1554,431 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <xs:complexType name="DeploymentActivity">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">an activity is launched by an entity, it contains the streams which are useful for logs.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="description" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the description of the activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="displayName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the display name of the activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="statusDetail" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the retrieved status of the activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="startTimeUtc" type="xs:long" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the start time of the activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="endTimeUtc" type="xs:long" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the end time of the activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="statusSummary" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the summary of the activity status.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="isDone" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a boolean flag to know if the activity is done.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="isError" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a boolean flag to know if the activity is in error.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="isSubmitted" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a boolean flag to know if the activity is submitted.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="isBegun" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a boolean flag to know if the activity is started.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="isEffector" type="xs:boolean" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a boolean flag to know if the activity is an effector.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="id" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en"></xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="parentId" type="xs:anyURI" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the uri of the parent activity.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="children">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">a set of children activities objects.</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="deploymentActivity" type="DeploymentActivity" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:sequence>
+                        <xs:element name="DeploymentActivityStreams" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="en">the set of streams that could contain stderr, stdout, stdin.</xsd:documentation>
+                            </xsd:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="stream" type="DeploymentStream" minOccurs="0" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentEffectors">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                Provides a list of :ref:`deploymentEffector-object` objects.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObjects">
+                <xs:sequence>
+                    <xs:element name="effectors" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the list of :ref:`deploymentEffector-object` objects</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="effector" type="DeploymentEffector" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentEffector">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">an effector can be invoke by user. It do some action.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the effector name.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="description" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the effector description.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="parameters">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the effector parameters.</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="parameter" type="DeploymentParameter" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="returnTypeName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the effector return type name.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentParameter">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">an parameter is an descriptor of deployment parameter.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the parameter name.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="description" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the parameter description.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="typeName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the parameter type name.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="defaultValue" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the parameter default value.</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentEntity">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">an entity represent a node in the deployed blueprint.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="type" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the type of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="serviceId" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the service id of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="displayName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the display name of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="applianceUUID" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the UUID of the uforge appliance linked to the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="status" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the status of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="hostname" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the hostname of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="ipAddress" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the IP address of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="loginUser" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the user to use to login into the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="sshKeyName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the ssh key name used to login into the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="winrmAddress" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the address used to login in a windows entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="uforgePublishedImageURI" type="xs:anyURI" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the uri of the linked published image</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="creationTime" type="xs:long" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the date of the entity creation</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="cloudProvider" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the name of the cloud provider which host the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="hardware" type="DeploymentHardware" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the hardware of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="activities">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the activities linked to the entity</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="deploymentActivity" type="DeploymentActivity" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="sensors">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Provide some information on deployment instance.</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="deploymentSensor" type="DeploymentSensor" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="config">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Provide actual values of blueprint config entries.</xsd:documentation>
+                        </xsd:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="deploymentConfig" type="DeploymentConfig" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentHardware">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">The hardware used for the deployment entity</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="flavorId" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the flavor id of the hardware</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="ram" type="xs:int" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the amount of memory in MB allocated to the hardware</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="cores" type="xs:int" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the number or cores of the hardware</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentStream">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+            </xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="type" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the type of the stream, could be: stderr, env, stdin, stdout</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="content" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the content of the stream</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="size" type="xs:int" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the size of the stream in bytes</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentSensor">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Provide information on deployment instance.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor name</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:sequence>
+                        <xs:element name="nameParts" minOccurs="0">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="en">parts of sensor name</xsd:documentation>
+                            </xsd:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="nameParts" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:element name="description" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor description</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="typeName" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor value type</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="value" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor value. Can be string, number, object ...</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeploymentConfig">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">Provide actual value of a blueprint config entry.</xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor name</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="value" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">sensor value. Can be string, number, object ...</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
     <xs:complexType name="BlueprintDeploymentAws">
         <xsd:annotation>
             <xsd:documentation xml:lang="en">
@@ -1548,6 +1991,30 @@
                     <xs:element name="region" type="xs:string" minOccurs="0">
                         <xsd:annotation>
                             <xsd:documentation xml:lang="en">the region where this machine image is registered</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="BlueprintDeploymentAzure">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                Provides the information required to deploy a blueprint to the Microsoft Azure environment.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="BlueprintDeployment">
+                <xs:sequence>
+                    <xs:element name="region" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the region where the blueprint will be deployed</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="storageAccount" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the storage account where the machine images of the blueprint are stored</xsd:documentation>
                         </xsd:annotation>
                     </xs:element>
                 </xs:sequence>
@@ -1591,6 +2058,25 @@
                     <xs:element name="region" type="xs:string" minOccurs="0">
                         <xsd:annotation>
                             <xsd:documentation xml:lang="en">the region where the blueprint is prepared</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="BlueprintPipelineAzure">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                Holds the information on the preparation of a blueprint to the Azure environment.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xs:complexContent>
+            <xs:extension base="BlueprintPipeline">
+                <xs:sequence>
+                    <xs:element name="storageAccount" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the storage account where the blueprint is prepared</xsd:documentation>
                         </xsd:annotation>
                     </xs:element>
                 </xs:sequence>
@@ -3514,6 +4000,26 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <xs:complexType name="DeploymentId">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+                Provides only id information of a deployment. A deployment is a set of one or more running instances (workloads).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">the id of the deployment</xsd:documentation>
+                </xsd:annotation>
+            </xs:element>
+            <xs:element name="uri" type="xs:anyURI" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">the uri of the deployment</xsd:documentation>
+                </xsd:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="Deployment">
         <xsd:annotation>
             <xsd:documentation xml:lang="en">
@@ -5281,13 +5787,39 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xs:complexType name="InstanceDisk">
+        <xs:complexContent>
+            <xs:extension base="UForgeObject">
+                <xs:sequence>
+                    <xs:element name="size" type="xs:long" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the size of the disk in MB</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
     <xs:complexType name="Instance">
         <xs:complexContent>
             <xs:extension base="UForgeObject">
                 <xs:sequence>
+                    <xs:element name="entityType" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the type of the entity responsible of the instance</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
                     <xs:element name="hardware" type="xs:string" minOccurs="0"/>
                     <xs:element name="cores" type="xs:int" minOccurs="0"/>
                     <xs:element name="memory" type="xs:int" minOccurs="0"/>
+                    <xs:element name="disks" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="disks" type="InstanceDisk" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                     <xs:element name="location" type="Location" minOccurs="0"/>
                     <xs:element name="hostname" type="xs:string" minOccurs="0"/>
                     <xs:element name="instanceId" type="xs:string" minOccurs="0"/>
@@ -5302,6 +5834,13 @@
                     <xs:element name="sshKeyName" type="xs:string" minOccurs="0"/>
                     <xs:element name="loginUser" type="xs:string" minOccurs="0"/>
                     <xs:element name="winrmAddress" type="xs:string" minOccurs="0"/>
+                    <xs:element name="activities" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="deploymentActivity" type="DeploymentActivity" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -7839,6 +8378,11 @@
                     <xs:element name="displayName" type="xs:string" minOccurs="0">
                         <xsd:annotation>
                             <xsd:documentation xml:lang="en">the cloud name for this machine image</xsd:documentation>
+                        </xsd:annotation>
+                    </xs:element>
+                    <xs:element name="region" type="xs:string" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">the region where this machine image is registered</xsd:documentation>
                         </xsd:annotation>
                     </xs:element>
                 </xs:sequence>

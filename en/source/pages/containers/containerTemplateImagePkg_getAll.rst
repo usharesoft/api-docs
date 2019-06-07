@@ -1,31 +1,30 @@
 .. Copyright FUJITSU LIMITED 2016-2019
 
-.. _containerTemplateImagePublished-delete:
+.. _containerTemplateImagePkg-getAll:
 
-containerTemplateImagePublished_delete
---------------------------------------
+containerTemplateImagePkg_getAll
+--------------------------------
 
-.. function:: DELETE /users/{uid}/mysoftware/{msid}/templates/{tid}/images/{tiid}/pimages/{ptiid}
+.. function:: GET /users/{uid}/mysoftware/{msid}/templates/{tid}/images/{tiid}/pkgs
 
 .. sidebar:: Summary
 
-	* Method: ``DELETE``
-	* Response Code: ``204 / 200``
-	* Response Formats: 
-	* Since: ``UForge 3.8.9``
+	* Method: ``GET``
+	* Response Code: ``200 / 304``
+	* Response Formats: ``application/xml`` ``application/json``
+	* Since: ``UForge 3.8.12``
 
-Deletes a published machine image for a container template.
+Retrieves all the native packages contained in the machine image.
 
 Security Summary
 ~~~~~~~~~~~~~~~~
 
 * Requires Authentication: ``true``
-* Entitlements Required: ``image_publish``
+* Entitlements Required: ``appliance_create``
 
 URI Parameters
 ~~~~~~~~~~~~~~
 
-* ``ptiid`` (required): the id of the :ref:`publishimage-object`
 * ``uid`` (required): the user name (login name) of the :ref:`user-object`
 * ``msid`` (required): the id of the :ref:`mySoftware-object`
 * ``tiid`` (required): the id of the :ref:`image-object`
@@ -41,25 +40,26 @@ Example Request
 
 .. code-block:: bash
 
-	curl "https://uforge.example.com/api/users/{uid}/mysoftware/{msid}/templates/{tid}/images/{tiid}/pimages/{ptiid}" -X DELETE \
+	curl "https://uforge.example.com/api/users/{uid}/mysoftware/{msid}/templates/{tid}/images/{tiid}/pkgs" -X GET \
 	-u USER_LOGIN:PASSWORD -H "Accept: application/xml"
 
 .. seealso::
 
-	 * :ref:`containerTemplateImageGeneration-cancel`
 	 * :ref:`containerTemplateImageGeneration-get`
-	 * :ref:`containerTemplateImagePkg-getAll`
 	 * :ref:`containerTemplateImagePublish-cancel`
 	 * :ref:`containerTemplateImagePublish-get`
+	 * :ref:`containerTemplateImagePublished-delete`
 	 * :ref:`containerTemplateImagePublished-get`
 	 * :ref:`containerTemplateImage-delete`
 	 * :ref:`containerTemplateImage-download`
 	 * :ref:`containerTemplateImage-downloadFile`
 	 * :ref:`containerTemplateImage-get`
 	 * :ref:`containerTemplateImage-publish`
+	 * :ref:`containerTemplateTargetFormat-getAll`
 	 * :ref:`containerTemplate-create`
 	 * :ref:`containerTemplate-generate`
 	 * :ref:`containerTemplate-get`
-	 * :ref:`containerTemplate-getAll`
 	 * :ref:`containertemplate-object`
+	 * :ref:`image-object`
 	 * :ref:`mySoftware-object`
+	 * :ref:`status-object`
